@@ -1,0 +1,30 @@
+---
+title: "Different Plotting Types"
+author: "vasundhara"
+date: "6 September 2019"
+output: html_document
+---
+
+```{r Changing Working directory}
+setwd("/home/bionivid-workshop/vasundhara/R/Plotting_session_with_r/")
+attach(mtcars)
+mtcars
+plot(wt~mpg)
+abline(lm(wt~mpg))
+title("Linear Regression Plot")
+dotchart(mtcars$mpg,labels=row.names(mtcars),cex=0.7, col=(c("blue", "green", "red", "pink", "yellow", "brown", "black")), main="Gas Milage for Car Models", xlab="Miles Per Gallon")
+counts <- table(mtcars$gear)
+barplot(counts, main="Car Distribution", xlab="Number of Gears")
+counts <- table(mtcars$vs, mtcars$gear)
+barplot(counts, main="Car Distribution by Gears and VS", xlab="Number of Gears", col=c("darkblue","red"), legend = rownames(counts))
+counts <- table(mtcars$vs, mtcars$gear)
+barplot(counts, main="Car Distribution by Gears and VS", xlab="Number of Gears", col=c("darkblue","red"), legend = rownames(counts), beside=TRUE)
+slices <- c(10, 12, 4, 16, 8)
+lbls <- c("US", "UK", "Australia", "Germany", "France")
+pie(slices, labels = lbls, main="Pie Chart of Countries")
+boxplot(mpg~cyl,data=mtcars, main="Car Milage Data", xlab="Number of Cylinders", ylab="Miles Per Gallon")
+boxplot(len~supp*dose, data=ToothGrowth, notch=TRUE, col=(c("gold","darkgreen")), main="Tooth Growth", xlab="Suppliment and Dose")
+boxplot(mpg~cyl, main="Milage by Car Weight", yaxt="n", xlab="Milage", horizontal=TRUE, col=terrain.colors(3))
+legend("topright", inset=.05, title="Number of Cylinders", c("4","6","8"), fill=terrain.colors(3), horiz=TRUE)
+```
+
